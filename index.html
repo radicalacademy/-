@@ -1,221 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Radical Academy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radical Academy</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  scroll-behavior: smooth;
+}
 
-    body {
-      background: #ffffff;
-      color: #333;
-    }
+/* Navbar */
+header {
+  position: sticky;
+  top: 0;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
 
-    /* Navbar */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 50px;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
+header img { height: 50px; }
 
-    header img {
-      height: 50px;
-    }
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
+}
 
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #d60000;
-      font-weight: bold;
-    }
+/* Hero */
+.hero {
+  height: 100vh;
+  background: linear-gradient(to right, red, white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+.hero h1 { font-size: 50px; }
 
-    /* Hero Section */
-    .hero {
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(to right, #ff4d4d, #ffffff);
-      color: white;
-      padding: 20px;
-    }
+.hero button {
+  padding: 12px 25px;
+  border: none;
+  background: white;
+  color: red;
+  border-radius: 25px;
+  cursor: pointer;
+}
 
-    .hero h1 {
-      font-size: 50px;
-      margin-bottom: 20px;
-    }
+/* Courses */
+.courses {
+  padding: 60px;
+  text-align: center;
+}
 
-    .hero p {
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
+.card {
+  border: 2px solid red;
+  display: inline-block;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
 
-    .hero button {
-      padding: 12px 25px;
-      font-size: 16px;
-      border: none;
-      background: white;
-      color: red;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
-    }
+.card:hover {
+  background: red;
+  color: white;
+}
 
-    .hero button:hover {
-      background: #ffe5e5;
-    }
+/* WhatsApp Button */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  text-decoration: none;
+}
 
-    /* Courses Section */
-    .courses {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .courses h2 {
-      color: red;
-      margin-bottom: 40px;
-    }
-
-    .course-box {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background: white;
-      border: 2px solid red;
-      padding: 20px;
-      width: 250px;
-      border-radius: 15px;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      background: red;
-      color: white;
-      transform: scale(1.05);
-    }
-
-    /* About Section */
-    .about {
-      background: #ffe5e5;
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .about h2 {
-      color: red;
-      margin-bottom: 20px;
-    }
-
-    /* Contact Section */
-    .contact {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .contact h2 {
-      color: red;
-      margin-bottom: 20px;
-    }
-
-    .contact button {
-      padding: 10px 20px;
-      background: red;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    /* Footer */
-    footer {
-      background: red;
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
-
-  </style>
+/* Footer */
+footer {
+  background: red;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <img src="logo.png" alt="Radical Academy Logo">
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Courses</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+<header>
+  <img src="logo.png">
+  <nav>
+    <a href="#">Home</a>
+    <a href="#courses">Courses</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div>
-      <h1>RADICAL ACADEMY</h1>
-      <p>Learn | Grow | Succeed</p>
-      <button>Join Now</button>
-    </div>
-  </section>
+<section class="hero">
+  <div>
+    <h1>RADICAL ACADEMY</h1>
+    <p>JEE | NEET | School Classes</p>
+    <button>Join Now</button>
+  </div>
+</section>
 
-  <!-- Courses -->
-  <section class="courses">
-    <h2>Our Courses</h2>
-    <div class="course-box">
-      <div class="card">
-        <h3>School Classes</h3>
-        <p>All subjects for school students</p>
-      </div>
+<section id="courses" class="courses">
+  <h2>Our Courses</h2>
 
-      <div class="card">
-        <h3>JEE Preparation</h3>
-        <p>Physics, Chemistry, Maths</p>
-      </div>
+  <div class="card">School Classes</div>
+  <div class="card">JEE Preparation</div>
+  <div class="card">NEET Preparation</div>
+</section>
 
-      <div class="card">
-        <h3>NEET Preparation</h3>
-        <p>Biology, Physics, Chemistry</p>
-      </div>
-    </div>
-  </section>
+<section id="contact" class="courses">
+  <h2>Contact Us</h2>
+  <p>Add your phone & address</p>
+</section>
 
-  <!-- About -->
-  <section class="about">
-    <h2>About Us</h2>
-    <p>We provide quality education and guidance to help students achieve their dreams.</p>
-  </section>
+<a href="https://wa.me/919198220074" class="whatsapp">💬</a>
 
-  <!-- Contact -->
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <p>Add your phone number and address here</p>
-    <button>Call Now</button>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Radical Academy | All Rights Reserved</p>
-  </footer>
+<footer>
+  © 2026 Radical Academy
+</footer>
 
 </body>
 </html>
