@@ -32,6 +32,25 @@ nav a {
   font-weight: bold;
 }
 
+nav a {
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: red;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+  }
+
 /* Hero */
 
 .hero {
@@ -77,7 +96,8 @@ button:hover, .btn:hover {
   transition: 0.3s;
   cursor: pointer;
   background: #fff;
-}
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
 
 .card:hover {
   background: red;
@@ -137,7 +157,17 @@ h1, h2 {
 p {
   margin-bottom: 20px;
 }
-  
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+  }
 </style>
 </head>
 
@@ -153,7 +183,7 @@ p {
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero reveal">
   <div>
     <h1>RADICAL ACADEMY</h1>
     <p>JEE | NEET | School Classes</p>
@@ -161,7 +191,7 @@ p {
   </div>
 </section>
 
-<section id="courses" class="courses">
+<section id="courses" class="courses reveal">
   <h2>Our Courses</h2>
 
   <div class="card">School Classes</div>
@@ -169,9 +199,12 @@ p {
   <div class="card">NEET Preparation</div>
 </section>
 
-<section id="contact" class="courses">
+<section id="contact" class="contact reveal">
   <h2>Contact Us</h2>
-  <p>Add your phone & address</p>
+  <p> +91 9198220074 | Save
+Holy Spirit hospital, Mahakali Caves Rd, 
+    Sher E Punjab Colony, Andheri East, Mumbai, 
+    Maharashtra 400093</p>
 </section>
 
 <a href="https://wa.me/919198220074" class="whatsapp">💬</a>
@@ -179,6 +212,21 @@ p {
 <footer>
   © 2026 Radical Academy
 </footer>
+
+<script>
+window.addEventListener("scroll", function() {
+  let reveals = document.querySelectorAll(".reveal");
+
+  for (let i = 0; i < reveals.length; i++) {
+    let windowHeight = window.innerHeight;
+    let elementTop = reveals[i].getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      reveals[i].classList.add("active");
+    }
+  }
+});
+</script>
 
 </body>
 </html>
