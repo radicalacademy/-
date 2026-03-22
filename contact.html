@@ -36,6 +36,17 @@
     .btn:hover {
       background: darkred;
     }
+  input, textarea {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+textarea {
+  height: 100px;
+}
+    
   </style>
 </head>
 
@@ -63,5 +74,20 @@
   <p>Holy Spirit hospital, Mahakali Caves Rd, Sher E Punjab Colony, Andheri East, Mumbai, Maharashtra 400093</p>
 </div>
 
+  <div class="box">
+  <h2>Send Message</h2>
+
+  <form action="https://formspree.io/f/mgonjyly" method="POST">
+
+    <input type="text" name="name" placeholder="Your Name" required><br><br>
+
+    <input type="email" name="email" placeholder="Your Email" required><br><br>
+
+    <textarea name="message" placeholder="Your Message" required></textarea><br><br>
+
+    <button type="submit" class="btn">Send Message</button>
+
+  </form>
+  </div>
 </body>
 </html>
