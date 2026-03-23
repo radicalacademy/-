@@ -147,15 +147,6 @@ section {
 h1, h2 { margin-bottom: 15px; }
 p { margin-bottom: 20px; }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: 0.6s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
 }
 </style>
 </head>
@@ -172,7 +163,7 @@ p { margin-bottom: 20px; }
 </header>
 
 <!-- About Section -->
-<section id="about" class="hero reveal">
+<section id="about" class="hero">
   <div>
     <h1>RADICAL ACADEMY</h1>
     <p>JEE | NEET | School Classes</p>
@@ -181,7 +172,7 @@ p { margin-bottom: 20px; }
 </section>
 
 <!-- Courses Section -->
-<section id="courses" class="courses reveal">
+<section id="courses" class="courses">
   <h2>Our Courses</h2>
   <div class="card">School Classes</div>
   <div class="card">JEE Preparation</div>
@@ -189,7 +180,7 @@ p { margin-bottom: 20px; }
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="contact reveal">
+<section id="contact" class="contact">
   <h2>Contact Us</h2>
   <p>+91 9198220074 | Save Holy Spirit hospital, Mahakali Caves Rd, Sher E Punjab Colony, Andheri East, Mumbai, Maharashtra 400093</p>
 </section>
@@ -205,18 +196,6 @@ p { margin-bottom: 20px; }
 <!-- Scripts -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-
-  // Scroll Reveal
-  const reveals = document.querySelectorAll(".reveal");
-  window.addEventListener("scroll", () => {
-    reveals.forEach(el => {
-      const windowHeight = window.innerHeight;
-      const elementTop = el.getBoundingClientRect().top;
-      if(elementTop < windowHeight - 100){
-        el.classList.add("active");
-      }
-    });
-  });
 
   // Smooth Scroll Navbar
   document.querySelectorAll('nav a').forEach(anchor => {
