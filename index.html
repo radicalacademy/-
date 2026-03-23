@@ -55,7 +55,9 @@ nav a:hover::after {
 
 .hero {
   height: 100vh;
-  background: linear-gradient(to right, red, white);
+  background: linear-gradient(270deg, red, white, red);
+  background-size: 600% 600%;
+  animation: gradientBG 10s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,13 +65,19 @@ nav a:hover::after {
   color: white;
   padding: 20px;
 }
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+  }
   
 .hero h1 { font-size: 50px; }
 
-button, .btn {
+  button, .btn {
   padding: 12px 25px;
   border: none;
-  background: red;
+  background: linear-gradient(to right, red, darkred);
   color: white;
   border-radius: 25px;
   cursor: pointer;
@@ -77,9 +85,9 @@ button, .btn {
 }
 
 button:hover, .btn:hover {
-  background: darkred;
   transform: scale(1.05);
-                              }
+  background: linear-gradient(to right, darkred, red);
+  }
 
 /* Courses */
 .courses {
@@ -88,7 +96,7 @@ button:hover, .btn:hover {
 }
 
 .card {
-  border: 2px solid red;
+  border: none;
   display: inline-block;
   margin: 15px;
   padding: 30px;
@@ -97,13 +105,12 @@ button:hover, .btn:hover {
   cursor: pointer;
   background: #fff;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  }
+}
 
 .card:hover {
-  background: red;
-  color: white;
   transform: translateY(-10px);
-  }
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
 
 /* WhatsApp Button */
 .whatsapp {
@@ -228,5 +235,16 @@ window.addEventListener("scroll", function() {
 });
 </script>
 
+<script>
+document.querySelectorAll('nav a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+  
 </body>
 </html>
