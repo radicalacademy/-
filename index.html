@@ -41,7 +41,7 @@ nav a {
   justify-content: center;
   text-align: center;
   color: white;
-  padding: 15px;
+  padding: 20px;
   }
 }
 .hero h1 {
@@ -54,13 +54,19 @@ nav a {
 }
 .hero h1 { font-size: 50px; }
 
-.hero button {
-  padding: 12px 25px;
-  border: none;
-  background: white;
-  color: red;
-  border-radius: 25px;
-  cursor: pointer;
+button, .btn {
+padding: 12px 25px;
+border: none;
+background: red;
+color: white;
+border-radius: 25px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+button:hover, .btn:hover {
+background: darkred;
+transform: scale(1.05);
 }
 
 /* Courses */
@@ -72,16 +78,18 @@ nav a {
 .card {
   border: 2px solid red;
   display: inline-block;
-  margin: 10px;
+  margin: 12px;
   padding: 25px;
   border-radius: 15px;
   transition: 0.3s;
   cursor: pointer;
-  }
+  background: #fff;
+}
 
 .card:hover {
   background: red;
   color: white;
+  transform: translateY(-10px);
 }
 
 /* WhatsApp Button */
@@ -104,6 +112,30 @@ footer {
   text-align: center;
   padding: 15px;
 }
+
+section {
+  animation: fadeUp 1s ease-in-out;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1, h2 {
+margin-bottom: 15px;
+}
+
+p {
+margin-bottom: 20px;
+}
+
 </style>
 </head>
 
