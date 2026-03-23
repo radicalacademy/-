@@ -223,9 +223,9 @@ p {
   <div>
     <h1>RADICAL ACADEMY</h1>
     <p>JEE | NEET | School Classes</p>
-  <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-  Join Now
-  </button>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      Join Now
+    </button>
   </div>
 </section>
 
@@ -268,8 +268,12 @@ p {
     action="https://formspree.io/f/mgonjyly" 
     method="POST" 
     style="margin-top: 30px; max-width: 600px; margin-left:auto; margin-right:auto; text-align:left;">
+    
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px;"><br>
+    
+    <label>Phone Number:</label><br>
+    <input type="tel" name="phone" required pattern="[0-9]{10}" title="Enter 10-digit phone number" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px;"><br>
 
     <label for="email">Email:</label><br>
     <input type="email" id="email" name="email" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px;"><br>
@@ -289,8 +293,8 @@ p {
   © 2026 Radical Academy
 </footer>
 
+<!-- Smooth Scroll Navbar -->
 <script>
-// Smooth Scroll Navbar
 document.querySelectorAll('nav a').forEach(anchor => {
   anchor.addEventListener('click', function(e){
     e.preventDefault();
@@ -321,83 +325,61 @@ document.querySelectorAll('nav a').forEach(anchor => {
         <option value="">Select Course</option>
         <option value="JEE">JEE</option>
         <option value="NEET">NEET</option>
-        <option value="CBSE/ICSE">CBSE/ICSE</option>
+        <option value="School Classes">School Classes</option>
       </select><br>
       
       <label>Phone Number:</label><br>
-      <input type="tel" name="phone" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid red; border-radius:5px;"><br>
+      <input type="tel" name="phone" required pattern="[0-9]{10}" title="Enter 10-digit phone number" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid red; border-radius:5px;"><br>
       
       <button type="submit" style="padding:12px 25px; background:red; color:white; border:none; border-radius:25px; cursor:pointer;">Submit</button>
     </form>
   </div>
 </div>
 
-<script>
-  // Show modal when page loads
-  window.addEventListener('load', () => {
-    document.getElementById('welcomeModal').style.display = 'flex';
-  });
-
-  // Close modal when X is clicked
-  document.getElementById('closeModal').addEventListener('click', () => {
-    document.getElementById('welcomeModal').style.display = 'none';
-  });
-</script>
-
-<!--AJAX submission script-->
+<!-- Registration Modal Script -->
 <script>
 window.addEventListener('load', () => {
-  // Only show modal if user hasn't submitted before
   if (!localStorage.getItem('welcomeSubmitted')) {
-    const modal = document.getElementById('welcomeModal');
-    if(modal) modal.style.display = 'flex';
+    document.getElementById('welcomeModal').style.display = 'flex';
   }
 });
 
-// Close modal on X click
-const closeBtn = document.getElementById('closeModal');
-if(closeBtn){
-  closeBtn.addEventListener('click', () => {
-    document.getElementById('welcomeModal').style.display = 'none';
-  });
-}
+document.getElementById('closeModal').addEventListener('click', () => {
+  document.getElementById('welcomeModal').style.display = 'none';
+});
 
-// Handle form submission
-const form = document.getElementById('registrationForm');
-if(form){
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const data = new FormData(form);
+const registrationForm = document.getElementById('registrationForm');
+registrationForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  localStorage.setItem('welcomeSubmitted', 'true'); // remember user immediately
+  const data = new FormData(registrationForm);
 
-    fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-      if(response.ok){
-        alert('Thank you! Your information has been submitted.');
-        form.reset();
-        document.getElementById('welcomeModal').style.display = 'none';
-        localStorage.setItem('welcomeSubmitted', 'true'); // THIS REMEMBERS THE USER
-      } else {
-        alert('Oops! There was a problem submitting your form.');
-      }
-    })
-    .catch(error => {
+  fetch(registrationForm.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if(response.ok){
+      alert('Thank you! Your information has been submitted.');
+      registrationForm.reset();
+      document.getElementById('welcomeModal').style.display = 'none';
+    } else {
       alert('Oops! There was a problem submitting your form.');
-    });
+    }
+  })
+  .catch(error => {
+    alert('Oops! There was a problem submitting your form.');
   });
-}
+});
 </script>
 
-<!--contact only once-->
+<!-- Contact Form AJAX Script -->
 <script>
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', function(e){
-  e.preventDefault(); // prevent default redirect
-
+  e.preventDefault(); // prevent redirect
   const data = new FormData(contactForm);
 
   fetch(contactForm.action, {
@@ -408,7 +390,7 @@ contactForm.addEventListener('submit', function(e){
   .then(response => {
     if(response.ok){
       alert('Thank you! Your message has been sent.');
-      contactForm.reset(); // clear the form
+      contactForm.reset();
     } else {
       alert('Oops! There was a problem sending your message.');
     }
@@ -418,5 +400,6 @@ contactForm.addEventListener('submit', function(e){
   });
 });
 </script>
+
 </body>
-  </html>
+                                                                                                                                                          </html>
