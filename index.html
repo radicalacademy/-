@@ -301,6 +301,42 @@ p {
   flex-shrink: 0;
 }
 
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.left { left: 10px; }
+.right { right: 10px; }
+
+/* Dots */
+.dots {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.dots span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  background: gray;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dots .active {
+  background: red;
+  }
+
 </style>
 </head>
 
@@ -347,14 +383,21 @@ p {
   <h2>Our Results</h2>
   <p>Consistent success in JEE, NEET & Board Exams</p>
 
-<div class="slider">
+  <div class="slider">
   <div class="slides" id="slides">
     <img src="result1.jpg">
     <img src="result2.jpg">
     <img src="result3.jpg">
     <img src="result4.jpg">
   </div>
-</div>
+
+  <!-- Arrows -->
+  <span class="arrow left" onclick="prevSlide()">❮</span>
+  <span class="arrow right" onclick="nextSlide()">❯</span>
+
+  <!-- Dots -->
+  <div class="dots" id="dots"></div>
+  </div>
 </section>
 
 <!-- Image Popup -->
@@ -521,21 +564,58 @@ contactForm.addEventListener('submit', function(e){
 </script>
 
 
-  <script>
+<script>
 let index = 0;
 const slides = document.getElementById("slides");
 const totalSlides = slides.children.length;
+const dotsContainer = document.getElementById("dots");
 
-setInterval(() => {
-  index++;
+// Create dots
+for (let i = 0; i < totalSlides; i++) {
+  let dot = document.createElement("span");
+  dot.addEventListener("click", () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+}
 
-  if (index === totalSlides) {
-    index = 0;
-  }
+const dots = dotsContainer.children;
 
+function updateSlider() {
   slides.style.transform = `translateX(-${index * 100}%)`;
-}, 3000); // 3 seconds per slide
-  </script>
+
+  // update dots
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].classList.remove("active");
+  }
+  dots[index].classList.add("active");
+}
+
+function nextSlide() {
+  index = (index + 1) % totalSlides;
+  updateSlider();
+}
+
+function prevSlide() {
+  index = (index - 1 + totalSlides) % totalSlides;
+  updateSlider();
+}
+
+function goToSlide(i) {
+  index = i;
+  updateSlider();
+}
+
+// Auto slide
+let interval = setInterval(nextSlide, 3000);
+
+// Pause on hover
+slides.addEventListener("mouseover", () => clearInterval(interval));
+slides.addEventListener("mouseout", () => {
+  interval = setInterval(nextSlide, 3000);
+});
+
+// Init
+updateSlider();
+</script>
 
   
 <script>
