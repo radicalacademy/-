@@ -6,16 +6,18 @@
 <title>Radical Academy</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  scroll-behavior: smooth;
-}
-
+/* Universal box-sizing and reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Body */
+body {
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+  background: #fff;
 }
 
 /* Navbar */
@@ -25,8 +27,10 @@ header {
   background: white;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 15px 40px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
 
 header img { height: 50px; }
@@ -36,9 +40,6 @@ nav a {
   text-decoration: none;
   color: red;
   font-weight: bold;
-}
-  
-nav a {
   position: relative;
 }
 
@@ -60,16 +61,25 @@ nav a:hover::after {
 /* Hero */
 .hero {
   height: 100vh;
-  background: linear-gradient(to right, red, white);
+  background: linear-gradient(270deg, red, white);
+  background-size: 600% 600%;
+  animation: gradientBG 15s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
   padding: 20px;
-  }
 }
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .hero h1 {
+  font-size: 50px;
   animation: fadeIn 2s ease-in-out;
 }
 
@@ -77,28 +87,32 @@ nav a:hover::after {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.hero h1 { font-size: 50px; }
+
+.hero p {
+  margin: 20px 0;
+  font-size: 20px;
+}
 
 button, .btn {
-padding: 12px 25px;
-border: none;
-background: red;
-color: white;
-border-radius: 25px;
-cursor: pointer;
-transition: 0.3s;
+  padding: 12px 25px;
+  border: none;
+  background: red;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
 }
 
 button:hover, .btn:hover {
-background: darkred;
-transform: scale(1.05);
+  background: darkred;
+  transform: scale(1.05);
 }
 
 /* Courses */
 .courses {
   padding: 60px;
   text-align: center;
-  min-height: 400px;  /* ensures cards don’t jump */
+  min-height: 400px;
 }
 
 .card {
@@ -110,7 +124,6 @@ transform: scale(1.05);
   cursor: pointer;
   background: #fff;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  /* Only animate background, color, and transform */
   transition: background 0.3s, color 0.3s, transform 0.3s;
 }
 
@@ -118,6 +131,28 @@ transform: scale(1.05);
   background: red;
   color: white;
   transform: translateY(-10px);
+}
+
+/* Contact */
+.contact {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.contact p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+/* Embedded map */
+.map-container {
+  margin: 20px auto;
+  max-width: 600px;
+  height: 300px;
+  border: 2px solid red;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 /* WhatsApp Button */
@@ -131,6 +166,7 @@ transform: scale(1.05);
   border-radius: 50%;
   font-size: 20px;
   text-decoration: none;
+  z-index: 1000;
 }
 
 /* Footer */
@@ -139,46 +175,32 @@ footer {
   color: white;
   text-align: center;
   padding: 15px;
-}
-
-/*section {
-  animation: fadeUp 1s ease-in-out;
-}*/
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  font-size: 16px;
+  margin-top: 20px;
 }
 
 h1, h2 {
-margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 p {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="logo.png">
+  <img src="logo.png" alt="Radical Academy Logo">
   <nav>
-    <a href="about.html">About</a>
-    <a href="courses.html">Courses</a>
-    <a href="contact.html">Contact</a>
+    <a href="#about">About</a>
+    <a href="#courses">Courses</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<section class="hero">
+<section id="about" class="hero">
   <div>
     <h1>RADICAL ACADEMY</h1>
     <p>JEE | NEET | School Classes</p>
@@ -188,15 +210,26 @@ margin-bottom: 20px;
 
 <section id="courses" class="courses">
   <h2>Our Courses</h2>
-
   <div class="card">School Classes</div>
   <div class="card">JEE Preparation</div>
   <div class="card">NEET Preparation</div>
 </section>
 
-<section id="contact" class="courses">
+<section id="contact" class="contact">
   <h2>Contact Us</h2>
-  <p>Add your phone & address</p>
+  <p>📞 +91 9198220074</p>
+  <p>📍 Holy Spirit Hospital, Mahakali Caves Rd, Sher E Punjab Colony, Andheri East, Mumbai, Maharashtra 400093</p>
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps?q=19.127789,72.867768&hl=es;z=14&output=embed" 
+      width="100%" 
+      height="100%" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
 </section>
 
 <a href="https://wa.me/919198220074" class="whatsapp">💬</a>
@@ -204,6 +237,19 @@ margin-bottom: 20px;
 <footer>
   © 2026 Radical Academy
 </footer>
+
+<script>
+// Smooth Scroll Navbar
+document.querySelectorAll('nav a').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target){
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
 
 </body>
 </html>
