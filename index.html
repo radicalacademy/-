@@ -108,9 +108,28 @@ button:hover, .btn:hover {
   transform: scale(1.05);
 }
 
+/* About Us Section */
+.about {
+  padding: 60px 20px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.about h2 {
+  margin-bottom: 20px;
+  color: red;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
 /* Courses */
 .courses {
-  padding: 60px;
+  padding: 60px 20px;
   text-align: center;
   min-height: 400px;
 }
@@ -136,8 +155,8 @@ button:hover, .btn:hover {
 /* Contact */
 .contact {
   padding: 60px 20px;
-  background: #f9f9f9;
   text-align: center;
+  background: #f9f9f9;
 }
 
 .contact p {
@@ -145,7 +164,6 @@ button:hover, .btn:hover {
   line-height: 1.6;
 }
 
-/* Embedded map */
 .map-container {
   margin: 20px auto;
   max-width: 600px;
@@ -200,7 +218,8 @@ p {
   </nav>
 </header>
 
-<section id="about" class="hero">
+<!-- Hero Section -->
+<section class="hero">
   <div>
     <h1>RADICAL ACADEMY</h1>
     <p>JEE | NEET | School Classes</p>
@@ -208,6 +227,14 @@ p {
   </div>
 </section>
 
+<!-- About Us Section -->
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <p>Radical Academy is dedicated to providing top-quality coaching for school students, JEE, and NEET aspirants. Our experienced faculty ensures every student receives personalized attention and guidance to achieve their academic goals.</p>
+  <p>We focus on building a strong foundation, concept clarity, and exam strategy so that every student is fully prepared for competitive exams while excelling in school academics.</p>
+</section>
+
+<!-- Courses Section -->
 <section id="courses" class="courses">
   <h2>Our Courses</h2>
   <div class="card">School Classes</div>
@@ -215,6 +242,7 @@ p {
   <div class="card">NEET Preparation</div>
 </section>
 
+<!-- Contact Section -->
 <section id="contact" class="contact">
   <h2>Contact Us</h2>
   <p>📞 +91 9198220074</p>
@@ -232,8 +260,10 @@ p {
   </div>
 </section>
 
+<!-- WhatsApp Button -->
 <a href="https://wa.me/919198220074" class="whatsapp">💬</a>
 
+<!-- Footer -->
 <footer>
   © 2026 Radical Academy
 </footer>
@@ -252,4 +282,4 @@ document.querySelectorAll('nav a').forEach(anchor => {
 </script>
 
 </body>
-</html>
+  </html>
