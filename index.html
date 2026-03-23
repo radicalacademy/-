@@ -30,9 +30,6 @@ nav a {
   text-decoration: none;
   color: red;
   font-weight: bold;
-}
-
-nav a {
   position: relative;
 }
 
@@ -49,10 +46,9 @@ nav a::after {
 
 nav a:hover::after {
   width: 100%;
-  }
+}
 
 /* Hero */
-
 .hero {
   height: 100vh;
   background: linear-gradient(270deg, red, white, red);
@@ -70,11 +66,16 @@ nav a:hover::after {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-  }
-  
-.hero h1 { font-size: 50px; }
+}
 
-  button, .btn {
+.hero h1 { font-size: 50px; animation: fadeIn 2s ease-in-out; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+button, .btn {
   padding: 12px 25px;
   border: none;
   background: linear-gradient(to right, red, darkred);
@@ -87,7 +88,7 @@ nav a:hover::after {
 button:hover, .btn:hover {
   transform: scale(1.05);
   background: linear-gradient(to right, darkred, red);
-  }
+}
 
 /* Courses */
 .courses {
@@ -133,37 +134,18 @@ footer {
   padding: 15px;
 }
 
-.hero h1 {
-  animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-  }
-
+/* General Animations */
 section {
   animation: fadeUp 1s ease-in-out;
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-h1, h2 {
-  margin-bottom: 15px;
-}
-
-p {
-  margin-bottom: 20px;
-}
+h1, h2 { margin-bottom: 15px; }
+p { margin-bottom: 20px; }
 
 .reveal {
   opacity: 0;
@@ -174,7 +156,7 @@ p {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
-  }
+}
 </style>
 </head>
 
@@ -182,11 +164,11 @@ p {
 
 <header>
   <img src="logo.png">
-<nav>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <a href="#courses">Courses</a>
-</nav>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#courses">Courses</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <section id="about" class="hero reveal">
@@ -199,7 +181,6 @@ p {
 
 <section id="courses" class="courses reveal">
   <h2>Our Courses</h2>
-
   <div class="card">School Classes</div>
   <div class="card">JEE Preparation</div>
   <div class="card">NEET Preparation</div>
@@ -207,10 +188,7 @@ p {
 
 <section id="contact" class="contact reveal">
   <h2>Contact Us</h2>
-  <p> +91 9198220074 | Save
-Holy Spirit hospital, Mahakali Caves Rd, 
-    Sher E Punjab Colony, Andheri East, Mumbai, 
-    Maharashtra 400093</p>
+  <p>+91 9198220074 | Save Holy Spirit hospital, Mahakali Caves Rd, Sher E Punjab Colony, Andheri East, Mumbai, Maharashtra 400093</p>
 </section>
 
 <a href="https://wa.me/919198220074" class="whatsapp">💬</a>
@@ -247,6 +225,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
-  
+
 </body>
-</html>
+  </html>
