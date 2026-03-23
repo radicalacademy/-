@@ -104,14 +104,15 @@ transform: scale(1.05);
 .card {
   border: 2px solid red;
   display: inline-block;
-  margin: 15px;          /* keeps spacing consistent */
+  margin: 15px;
   padding: 30px;
   border-radius: 15px;
   cursor: pointer;
   background: #fff;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  /* Only animate background, color, and transform */
   transition: background 0.3s, color 0.3s, transform 0.3s;
-    }
+}
 
 .card:hover {
   background: red;
