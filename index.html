@@ -264,7 +264,10 @@ p {
   </div>
 
   <!-- Contact Form -->
-  <form action="https://formspree.io/f/mgonjyly" method="POST" style="margin-top: 30px; max-width: 600px; margin-left:auto; margin-right:auto; text-align:left;">
+  <form id="contactForm" 
+    action="https://formspree.io/f/mgonjyly" 
+    method="POST" 
+    style="margin-top: 30px; max-width: 600px; margin-left:auto; margin-right:auto; text-align:left;">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px;"><br>
 
@@ -318,7 +321,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
         <option value="">Select Course</option>
         <option value="JEE">JEE</option>
         <option value="NEET">NEET</option>
-        <option value="School Classes">School Classes</option>
+        <option value="CBSE/ICSE">CBSE/ICSE</option>
       </select><br>
       
       <label>Phone Number:</label><br>
@@ -343,11 +346,19 @@ document.querySelectorAll('nav a').forEach(anchor => {
 
 <!--AJAX submission script-->
 <script>
+window.addEventListener('load', () => {
+  if (!localStorage.getItem('welcomeSubmitted')) {
+    document.getElementById('welcomeModal').style.display = 'flex';
+  }
+});
+
+document.getElementById('closeModal').addEventListener('click', () => {
+  document.getElementById('welcomeModal').style.display = 'none';
+});
+
 const form = document.getElementById('registrationForm');
-
 form.addEventListener('submit', function(e){
-  e.preventDefault(); // prevent default redirect
-
+  e.preventDefault();
   const data = new FormData(form);
 
   fetch(form.action, {
@@ -358,8 +369,9 @@ form.addEventListener('submit', function(e){
   .then(response => {
     if(response.ok){
       alert('Thank you! Your information has been submitted.');
-      form.reset(); // clear the form
-      document.getElementById('welcomeModal').style.display = 'none'; // close modal
+      form.reset();
+      document.getElementById('welcomeModal').style.display = 'none';
+      localStorage.setItem('welcomeSubmitted', 'true'); // this is new
     } else {
       alert('Oops! There was a problem submitting your form.');
     }
@@ -369,5 +381,33 @@ form.addEventListener('submit', function(e){
   });
 });
   </script>
+
+<!--contact only once-->
+<script>
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', function(e){
+  e.preventDefault(); // prevent default redirect
+
+  const data = new FormData(contactForm);
+
+  fetch(contactForm.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if(response.ok){
+      alert('Thank you! Your message has been sent.');
+      contactForm.reset(); // clear the form
+    } else {
+      alert('Oops! There was a problem sending your message.');
+    }
+  })
+  .catch(error => {
+    alert('Oops! There was a problem sending your message.');
+  });
+});
+</script>
 </body>
   </html>
