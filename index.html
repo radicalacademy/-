@@ -31,6 +31,25 @@ nav a {
   color: red;
   font-weight: bold;
 }
+  
+nav a {
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: red;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
 
 /* Hero */
 .hero {
@@ -79,12 +98,13 @@ transform: scale(1.05);
   border: 2px solid red;
   display: inline-block;
   margin: 15px;
-  padding: 15px;
+  padding: 30px;
   border-radius: 15px;
   transition: 0.3s;
   cursor: pointer;
   background: #fff;
-}
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
 
 .card:hover {
   background: red;
