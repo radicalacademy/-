@@ -299,5 +299,45 @@ document.querySelectorAll('nav a').forEach(anchor => {
 });
 </script>
 
+<!-- Registration Modal -->
+<div id="welcomeModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:white; padding:30px; border-radius:15px; max-width:400px; width:90%; text-align:left; position:relative;">
+    <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px;">&times;</span>
+    <h2>Welcome! Join Radical Academy</h2>
+    <form action="https://formspree.io/f/mgonjyly" method="POST">
+      <label>First Name:</label><br>
+      <input type="text" name="first_name" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid red; border-radius:5px;"><br>
+      
+      <label>Last Name:</label><br>
+      <input type="text" name="last_name" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid red; border-radius:5px;"><br>
+      
+      <label>Course:</label><br>
+      <select name="course" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid red; border-radius:5px;">
+        <option value="">Select Course</option>
+        <option value="JEE">JEE</option>
+        <option value="NEET">NEET</option>
+        <option value="School Classes">School Classes</option>
+      </select><br>
+      
+      <label>Phone Number:</label><br>
+      <input type="tel" name="phone" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid red; border-radius:5px;"><br>
+      
+      <button type="submit" style="padding:12px 25px; background:red; color:white; border:none; border-radius:25px; cursor:pointer;">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Show modal when page loads
+  window.addEventListener('load', () => {
+    document.getElementById('welcomeModal').style.display = 'flex';
+  });
+
+  // Close modal when X is clicked
+  document.getElementById('closeModal').addEventListener('click', () => {
+    document.getElementById('welcomeModal').style.display = 'none';
+  });
+</script>
+
 </body>
   </html>
