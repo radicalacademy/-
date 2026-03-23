@@ -204,6 +204,80 @@ h1, h2 {
 p {
   margin-bottom: 20px;
 }
+
+/* Achievements Section */
+.achievements {
+  padding: 60px 20px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.achievements h2 {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.achievements p {
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+
+/* Gallery Grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Images */
+.gallery img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  background: white;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.4s, box-shadow 0.4s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Hover Effect */
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(255,0,0,0.3);
+}
+
+/* Popup (Full View) */
+#imagePopup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#imagePopup img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+#closePopup {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  }
+
 </style>
 </head>
 
@@ -245,30 +319,24 @@ p {
   <div class="card">NEET Preparation</div>
 </section>
 
-<!-- Achievements / Results Section -->
-<section id="achievements" class="about" style="background:#f5f5f5; padding:60px 20px; text-align:center;">
-  <h2 style="color:red;">Achievements</h2>
-  <p style="max-width:800px; margin:0 auto 40px; font-size:18px; line-height:1.6;">
-    Our students consistently achieve top ranks in exams and competitions. Here are some highlights of their recent results.
-  </p>
+<!-- Achievements Section -->
+<section id="achievements" class="achievements">
+  <h2>Our Results</h2>
+  <p>Consistent success in JEE, NEET & Board Exams</p>
 
-  <!-- Image Gallery -->
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; max-width:1200px; margin:auto;">
-    <div>
-      <img src="result1.jpg" alt="Result 1" style="width:100%; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-    </div>
-    <div>
-      <img src="result2.jpg" alt="Result 2" style="width:100%; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-    </div>
-    <div>
-      <img src="result3.jpg" alt="Result 3" style="width:100%; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-    </div>
-    <div>
-      <img src="result4.jpg" alt="Result 3" style="width:100%; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-    </div>
-    <!-- Add more images as needed -->
+  <div class="gallery">
+    <img src="result1.jpg" alt="Result">
+    <img src="result2.jpg" alt="Result">
+    <img src="result3.jpg" alt="Result">
+    <img src="result4.jpg" alt="Result">
   </div>
 </section>
+
+<!-- Image Popup -->
+<div id="imagePopup">
+  <span id="closePopup">&times;</span>
+  <img id="popupImg">
+</div>
 
 <!-- Contact Section -->
 <section id="contact" class="contact">
@@ -427,5 +495,27 @@ contactForm.addEventListener('submit', function(e){
 });
 </script>
 
+
+<script>
+const images = document.querySelectorAll('.gallery img');
+const popup = document.getElementById('imagePopup');
+const popupImg = document.getElementById('popupImg');
+const closePopup = document.getElementById('closePopup');
+
+images.forEach(img => {
+  img.addEventListener('click', () => {
+    popup.style.display = 'flex';
+    popupImg.src = img.src;
+  });
+});
+
+closePopup.onclick = () => {
+  popup.style.display = 'none';
+};
+
+popup.onclick = () => {
+  popup.style.display = 'none';
+};
+  </script>
 </body>
                                                                                                                                                           </html>
