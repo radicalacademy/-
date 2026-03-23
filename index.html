@@ -247,6 +247,8 @@ p {
   <h2>Contact Us</h2>
   <p>📞 +91 9198220074</p>
   <p>📍 Holy Spirit Hospital, Mahakali Caves Rd, Sher E Punjab Colony, Andheri East, Mumbai, Maharashtra 400093</p>
+  
+  <!-- Map -->
   <div class="map-container">
     <iframe 
       src="https://www.google.com/maps?q=19.127789,72.867768&hl=es;z=14&output=embed" 
@@ -258,6 +260,20 @@ p {
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
   </div>
+
+  <!-- Contact Form -->
+  <form action="https://formspree.io/f/mgonjyly" method="POST" style="margin-top: 30px; max-width: 600px; margin-left:auto; margin-right:auto; text-align:left;">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px;"><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px;"><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px; height:100px;"></textarea><br>
+
+    <button type="submit">Send Message</button>
+  </form>
 </section>
 
 <!-- WhatsApp Button -->
