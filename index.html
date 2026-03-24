@@ -692,12 +692,12 @@ function goToSlide(i) {
 }
 
 // Auto slide
-let interval = setInterval(nextSlide, 3000);
+let interval = setInterval(nextSlide, 8000);
 
 // Pause on hover
 slides.addEventListener("mouseover", () => clearInterval(interval));
 slides.addEventListener("mouseout", () => {
-  interval = setInterval(nextSlide, 3000);
+  interval = setInterval(nextSlide, 8000);
 });
 
 // Init
