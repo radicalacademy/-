@@ -760,5 +760,55 @@ const observer = new IntersectionObserver(entries => {
 faders.forEach(el => observer.observe(el));
   </script>
 
+<script type="module">
+// Import Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// Your config
+const firebaseConfig = {
+  apiKey: "AIzaSyD32dV8RnhW3pBWCT4U9ABo28q25EL0PNk",
+  authDomain: "radicalacademy-bf62c.firebaseapp.com",
+  projectId: "radicalacademy-bf62c",
+  storageBucket: "radicalacademy-bf62c.firebasestorage.app",
+  messagingSenderId: "999441293497",
+  appId: "1:999441293497:web:2aec093f6f23f40efcbb68"
+};
+
+// Initialize
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// 📩 Contact Form
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", async function(e){
+  const data = new FormData(contactForm);
+
+  await addDoc(collection(db, "contacts"), {
+    name: data.get("name"),
+    phone: data.get("phone"),
+    email: data.get("email"),
+    message: data.get("message"),
+    time: new Date()
+  });
+});
+
+// 📝 Registration Form
+const registrationForm = document.getElementById("registrationForm");
+
+registrationForm.addEventListener("submit", async function(e){
+  const data = new FormData(registrationForm);
+
+  await addDoc(collection(db, "registrations"), {
+    firstName: data.get("first_name"),
+    lastName: data.get("last_name"),
+    course: data.get("course"),
+    phone: data.get("phone"),
+    time: new Date()
+  });
+});
+</script>
+
 </body>                                                                                                                                                         
 </html>
