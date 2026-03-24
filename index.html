@@ -38,33 +38,41 @@ header {
   font-size: 25px;
   cursor: pointer;
   margin-right: 15px;
+  transition: transform 0.3s; /* ADD THIS */
 }
 
-/* Hide menu by default */
+.menu-icon:active {
+  transform: scale(0.9);
+}
+
+/* Side Menu */
 nav {
-  position: absolute;
-  top: 70px;
-  left: 0;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: -250px; /* hidden initially */
+  width: 250px;
+  height: 100%;
   background: white;
-  display: none;
+  display: flex;
   flex-direction: column;
-  text-align: center;
+  padding-top: 60px;
+  transition: 0.3s ease;
+  z-index: 1001;
 }
 
-/* Show menu */
+/* When active */
 nav.active {
-  display: flex;
+  left: 0;
 }
 
 /* Menu links */
 nav a {
   padding: 15px;
-  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
   color: red;
   text-decoration: none;
   font-weight: bold;
-}
+  }
 
 header img { height: 50px; }
 
@@ -374,7 +382,23 @@ p {
 .dots .active {
   background: red;
   }
+  
+/* Dark overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 1000;
+}
 
+/* Show overlay */
+#overlay.active {
+  display: block;
+}
 </style>
 </head>
 
@@ -390,6 +414,7 @@ p {
     <a href="#achievements">Achievements</a>
     <a href="#contact">Contact</a>
   </nav>
+  <div id="overlay" onclick="closeMenu()"></div>
 </header>
 
 <!-- Hero Section -->
@@ -684,15 +709,19 @@ popup.onclick = () => {
 <script>
 function toggleMenu() {
   document.getElementById("navMenu").classList.toggle("active");
+  document.getElementById("overlay").classList.toggle("active");
 }
 
+function closeMenu() {
+  document.getElementById("navMenu").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
+}
+
+// Close menu when clicking a link
 document.querySelectorAll('#navMenu a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById("navMenu").classList.remove("active");
-  });
+  link.addEventListener('click', closeMenu);
 });
-  
-  </script>
+</script>
 
 
 </body>                                                                                                                                                         
