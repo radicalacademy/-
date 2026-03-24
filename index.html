@@ -514,7 +514,13 @@ p {
     <input type="text" id="name" name="name" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px;"><br>
     
     <label>Phone Number:</label><br>
-    <input type="tel" name="phone" required pattern="[0-9]{10}" title="Enter 10-digit phone number" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px;"><br>
+    <input type="tel" name="phone" required 
+pattern="[0-9]{10}" 
+maxlength="10"
+inputmode="numeric"
+oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+title="Enter 10-digit phone number"
+style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px;">
 
     <label for="email">Email:</label><br>
     <input type="email" id="email" name="email" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid red; border-radius:5px;"><br>
@@ -570,7 +576,13 @@ document.querySelectorAll('nav a').forEach(anchor => {
       </select><br>
       
       <label>Phone Number:</label><br>
-      <input type="tel" name="phone" required pattern="[0-9]{10}" title="Enter 10-digit phone number" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid red; border-radius:5px;"><br>
+      <input type="tel" name="phone" required 
+pattern="[0-9]{10}" 
+maxlength="10"
+inputmode="numeric"
+oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+title="Enter 10-digit phone number"
+style="width:100%; padding:10px; margin-bottom:10px; border:1px solid red; border-radius:5px;">
       
       <button type="submit" style="padding:12px 25px; background:red; color:white; border:none; border-radius:25px; cursor:pointer;">Submit</button>
     </form>
